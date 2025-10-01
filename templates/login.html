@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <div class="card card-primary shadow">
+      <div class="card-header text-center">
+        <h3 class="card-title w-100"><b>Admin</b>Fact</h3>
+      </div>
+      <div class="card-body">
+        <p class="text-muted">Ingresá tus credenciales</p>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+          {{ form.hidden_tag() }}
+          <div class="form-group">{{ form.email(class="form-control", placeholder="Email") }}</div>
+          <div class="form-group">{{ form.password(class="form-control", placeholder="Contraseña") }}</div>
+          <div class="form-group form-check">
+            {{ form.remember(class="form-check-input") }} <label class="form-check-label">Recordarme</label>
+          </div>
+          {{ form.submit(class="btn btn-primary btn-block") }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

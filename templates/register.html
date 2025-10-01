@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width: 500px;">
+    <h3>Crear usuario</h3>
+
+    <form method="POST">
+
+        <div class="form-group mb-3">
+            <label>Nombre</label>
+            <input type="text" class="form-control" name="nombre" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Contraseña</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Rol</label>
+            <select name="rol" class="form-control">
+                <option value="user" selected>Usuario</option>
+                <option value="admin">Administrador</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Crear</button>
+    </form>
+</div>
+{% endblock %}

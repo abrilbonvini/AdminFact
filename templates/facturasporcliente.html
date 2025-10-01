@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}Facturas de {{ cliente.nombre }}{% endblock %}
+
+{% block content %}
+<h2>Facturas de {{ cliente.nombre }}</h2>
+
+{% if facturas %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Fecha</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for factura in facturas %}
+    <tr>
+      <td>{{ factura.id }}</td>
+      <td>{{ factura.fecha.strftime('%d/%m/%Y') }}</td>
+      <td>${{ factura.total }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No hay facturas para este cliente.</p>
+{% endif %}
+
+<a href="{{ url_for('reportes_bp.seleccionar_cliente') }}" class="btn btn-secondary">
+  Volver
+</a>
+{% endblock %}

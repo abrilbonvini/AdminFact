@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Editar Producto</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label>Descripción</label>
+        <input type="text" name="descripcion" value="{{ producto.descripcion }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Precio</label>
+        <input type="number" name="precio" value="{{ producto.precio }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Stock</label>
+        <input type="number" name="stock" value="{{ producto.stock }}" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a href="{{ url_for('productos_bp.lista_productos') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

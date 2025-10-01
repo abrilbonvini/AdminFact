@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Nueva Factura</h2>
+
+<form method="POST">
+
+    <!-- Cliente -->
+    <label for="cliente_id">Cliente:</label>
+    <select name="cliente_id" required>
+        {% for c in clientes %}
+            <option value="{{ c.id_cliente }}">{{ c.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Producto -->
+    <label for="producto_id">Producto:</label>
+    <select name="producto_id" required>
+        {% for p in productos %}
+            <option value="{{ p.id }}" data-precio="{{ p.precio }}">
+                {{ p.descripcion }} - ${{ p.precio }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- Cantidad -->
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" name="cantidad" min="1" required>
+
+    <!-- Observaciones -->
+    <label for="observaciones">Observaciones:</label>
+    <textarea name="observaciones" rows="3"></textarea>
+
+    <button type="submit">Crear Factura</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Editar Factura{% endblock %}
+
+{% block content %}
+<h2>Editar Factura</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label>Cliente</label>
+        <select name="id_cliente" class="form-control" required>
+            {% for cliente in clientes %}
+            <option value="{{ cliente.id_cliente }}" {% if cliente.id_cliente == factura.id_cliente %}selected{% endif %}>
+                {{ cliente.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Observaciones</label>
+        <textarea name="observaciones" class="form-control">{{ factura.observaciones }}</textarea>
+    </div>
+
+    <div class="text-end">
+        <button type="submit" class="btn btn-warning">Actualizar</button>
+        <a href="{{ url_for('facturas_bp.lista_facturas') }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

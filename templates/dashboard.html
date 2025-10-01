@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="callout callout-info">
+      <h5>¡Hola, {{ user.nombre }}!</h5>
+      <p>Bienvenido a tu panel de AdminFact.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="small-box bg-light border">
+      <div class="inner">
+        <h3>{{ clientes_len }}</h3>
+        <p>Clientes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="small-box bg-light border">
+      <div class="inner">
+        <h3>{{ productos_len }}</h3>
+        <p>Productos</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="small-box bg-light border">
+      <div class="inner">
+        <h3>{{ facturas_len }}</h3>
+        <p>Facturas</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="small-box bg-light border">
+      <div class="inner">
+        <h3>{{ ventas_len }}</h3>
+        <p>Ventas</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

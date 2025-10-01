@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Reportes{% endblock %}
+
+{% block content %}
+<h2>Reportes</h2>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <a href="{{ url_for('reportes_bp.seleccionar_cliente') }}">📄 Facturas por Cliente</a>
+  </li>
+  <li class="list-group-item">
+    <a href="{{ url_for('reportes_bp.ventas_por_periodo') }}">📆 Ventas por Período</a>
+  </li>
+</ul>
+{% endblock %}

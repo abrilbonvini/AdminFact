@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Listado de Facturas{% endblock %}
+
+{% block content %}
+<h2>Listado de Facturas</h2>
+
+<a href="{{ url_for('facturas_bp.nueva_factura') }}" class="btn btn-primary mb-3">Nueva Factura</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for factura in facturas %}
+        <tr>
+            <td>{{ factura.id }}</td>
+            <td>{{ factura.cliente.nombre }}</td>
+            <td>{{ factura.fecha.strftime('%d/%m/%Y') }}</td>
+            <td>${{ factura.total }}</td>
+            <td>
+                <a href="{{ url_for('facturas_bp.editar_factura', id=factura.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{{ url_for('facturas_bp.eliminar_factura', id=factura.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Eliminar factura?')">Eliminar</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5" class="text-center">No hay facturas registradas</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
