@@ -11,9 +11,9 @@ main_bp = Blueprint("main", __name__)
 def dashboard():
     clientes_count = Cliente.query.count()
     productos_count = Producto.query.count()
-    facturas_count = Factura.query.count()  # ✅ total de facturas (ventas)
+    facturas_count = Factura.query.count()  # total de facturas (ventas)
     
-    # ✅ Por ahora mostramos las ventas igual que las facturas
+    # ventas igual que las facturas
     ventas_count = facturas_count
 
     return render_template(
@@ -22,6 +22,6 @@ def dashboard():
         clientes_len=clientes_count,
         productos_len=productos_count,
         facturas_len=facturas_count,
-        ventas_len=ventas_count  # ✅ esto va al template
+        ventas_len=ventas_count  #  esto va al template
     )
 

@@ -33,7 +33,7 @@ def nuevo_cliente():
 
     return render_template("nuevo.html")
 
-# ✅ Editar cliente
+#  Editar cliente
 @clientes_bp.route("/editar/<int:id>", methods=["GET", "POST"])
 @login_required
 def editar_cliente(id):
@@ -51,7 +51,7 @@ def editar_cliente(id):
 
     return render_template("editar.html", cliente=cliente)
 
-# ✅ Eliminar cliente
+# Eliminar cliente
 @clientes_bp.route("/eliminar/<int:id>", methods=["POST"])
 @login_required
 def eliminar_cliente(id):

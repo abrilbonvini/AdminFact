@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required
-from sqlalchemy.exc import IntegrityError  # ✅ IMPORTANTE
+from sqlalchemy.exc import IntegrityError  
 from extensions import db
 from models.producto import Producto
 
@@ -51,7 +51,7 @@ def editar_producto(id):
 
     return render_template("editarproducto.html", producto=producto)
 
-# Eliminar producto (con control de integridad)
+# Eliminar producto
 @productos_bp.route("/eliminar/<int:id>", methods=["POST"])
 @login_required
 def eliminar_producto(id):

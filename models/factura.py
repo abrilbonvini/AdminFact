@@ -8,7 +8,7 @@ class Factura(db.Model):
     cliente_id = db.Column(db.Integer, db.ForeignKey("clientes.id_cliente"))
     total = db.Column(db.Float, default=0)
 
-    # ✅ Relación para poder usar factura.cliente en los templates
+    
     cliente = db.relationship("Cliente", backref="facturas")
 
     detalles = db.relationship(

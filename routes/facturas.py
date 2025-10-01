@@ -7,7 +7,7 @@ from models import Cliente, Producto
 facturas_bp = Blueprint("facturas_bp", __name__, url_prefix="/facturas")
 
 
-# ✅ LISTAR FACTURAS
+#  LISTAR FACTURAS
 @facturas_bp.route("/")
 @login_required
 def lista_facturas():
@@ -15,7 +15,7 @@ def lista_facturas():
     return render_template("listafactura.html", facturas=facturas)
 
 
-# ✅ CREAR FACTURA
+# CREAR FACTURA
 @facturas_bp.route("/nueva", methods=["GET", "POST"])
 @login_required
 def nueva_factura():
@@ -33,7 +33,7 @@ def nueva_factura():
         db.session.add(factura)
         db.session.commit()
 
-        # Agregar el detalle
+        # detalle
         producto = Producto.query.get(producto_id)
         precio = producto.precio
 
@@ -55,7 +55,7 @@ def nueva_factura():
     return render_template("nuevafactura.html", clientes=clientes, productos=productos)
 
 
-# ✅ EDITAR FACTURA (si querés usarlo después)
+#  EDITAR FACTURA
 @facturas_bp.route("/editar/<int:id>", methods=["GET", "POST"])
 @login_required
 def editar_factura(id):
@@ -72,7 +72,7 @@ def editar_factura(id):
     return render_template("editarfactura.html", factura=factura, clientes=clientes)
 
 
-# ✅ ELIMINAR FACTURA (esta era la que faltaba)
+#  ELIMINAR FACTURA 
 @facturas_bp.route("/eliminar/<int:id>")
 @login_required
 def eliminar_factura(id):

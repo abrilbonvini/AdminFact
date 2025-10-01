@@ -10,14 +10,14 @@ def create_app():
     migrate.init_app(app, db)
     login_manager.init_app(app)
 
-    # Blueprints EXISTENTES
+    # Blueprints
     from routes.auth import auth_bp
     from routes.dashboard import main_bp
     from routes.clientes import clientes_bp
     from routes.productos import productos_bp
     from routes.facturas import facturas_bp
 
-    # ✅ IMPORTANTE: Agregar este import
+    
     from routes.reportes import reportes_bp
 
     # Registro de blueprints
@@ -26,7 +26,7 @@ def create_app():
     app.register_blueprint(clientes_bp)
     app.register_blueprint(productos_bp)
     app.register_blueprint(facturas_bp)
-    app.register_blueprint(reportes_bp)   # ✅ AGREGADO
+    app.register_blueprint(reportes_bp)  
 
     with app.app_context():
         db.create_all()

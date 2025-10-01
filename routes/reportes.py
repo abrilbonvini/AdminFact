@@ -6,20 +6,20 @@ from datetime import datetime
 
 reportes_bp = Blueprint("reportes_bp", __name__, url_prefix="/reportes")
 
-# ✅ 0) Menú principal de reportes
+#  Menu principal de reportes
 @reportes_bp.route("/")
 @login_required
 def menu_reportes():
     return render_template("menureportes.html")
 
-# ✅ 1) Listado de clientes para seleccionar
+#  Listado de clientes para seleccionar
 @reportes_bp.route("/facturas-por-cliente")
 @login_required
 def seleccionar_cliente():
     clientes = Cliente.query.all()
     return render_template("seleccionarcliente.html", clientes=clientes)
 
-# ✅ 2) Facturas de un cliente puntual
+#  Facturas de un cliente puntual
 @reportes_bp.route("/facturas-por-cliente/<int:cliente_id>")
 @login_required
 def facturas_por_cliente(cliente_id):
@@ -27,7 +27,7 @@ def facturas_por_cliente(cliente_id):
     facturas = Factura.query.filter_by(cliente_id=cliente_id).all()
     return render_template("facturasporcliente.html", cliente=cliente, facturas=facturas)
 
-# ✅ 3) Reporte de ventas por período
+#  Reporte de ventas por período
 @reportes_bp.route("/ventas-por-periodo", methods=["GET", "POST"])
 @login_required
 def ventas_por_periodo():
